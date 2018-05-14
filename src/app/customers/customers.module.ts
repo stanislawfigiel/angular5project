@@ -8,6 +8,7 @@ import {CustomersEditComponent} from "./edit/customers.edit.component";
 import {CustomersAddComponent} from "./add/customers.add.component";
 import {CustomersDeleteComponent} from "./delete/customers.delete.component";
 import {TopMenuCustomersComponent} from "./topMenuCustomers/topMenuCustomers.component";
+import {RestApiService} from "../common/service/RestApiService";
 
 
 const routes: Routes = [
@@ -33,7 +34,7 @@ const routes: Routes = [
         component: CustomersAddComponent
       },
       {
-        path: 'edit',
+        path: 'edit/:id',
         component: CustomersEditComponent
       },
       {
@@ -61,7 +62,7 @@ const routes: Routes = [
   ],
   exports: [CustomersComponent,
   ],
-  providers: [],
+  providers: [RestApiService],
   bootstrap: [CustomersComponent]
 })
 

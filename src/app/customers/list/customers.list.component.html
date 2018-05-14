@@ -1,1 +1,13 @@
 customers list component
+<ul>
+  <li *ngFor="let customer of list; let idx=index;"
+      [class.selected]="customer===selectedCustomer"
+      (click)="selectCustomer(customer)"
+  >
+    <a routerLink="/customers/edit/{{idx}}" >
+    {{customer.firstName}}
+    {{customer.lastName}}
+  </a>
+  </li>
+
+</ul>
