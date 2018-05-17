@@ -1,14 +1,59 @@
-customers list component
+
+<!--
 
 <ul>
   <li *ngFor="let customer of list; let idx=index;"
       [class.selected]="customer===selectedCustomer"
       (click)="selectCustomer(customer)"
   >
-    <a routerLink="/customers/edit/{{idx}}" >
-    {{customer.firstName}}
-    {{customer.lastName}}
-  </a>
+    <a routerLink="/customers/edit/{{idx}}">
+      {{customer.firstName}}
+      {{customer.lastName}}
+    </a>
   </li>
 
 </ul>
+-->
+
+<mat-list>
+  <mat-list-item *ngFor="let customer of list; let idx=index;">
+    <div class="avatar">
+      <mat-icon class="icon mat-accent">person</mat-icon>
+    </div>
+    <div class="mat-list-item-text">
+    <span> {{customer.firstName}} {{customer.lastName}}</span>
+    </div>
+
+
+    <mat-menu class="mat-secondary">
+    <mat-button class="mat-icon-button">
+      <mat-tooltip mat-direction="left">Click to show menu</mat-tooltip>
+      <mat-icon> menu </mat-icon>
+    </mat-button>
+    <mat-menu-content width="4">
+      <mat-menu-item>
+        <mat-button class="mat-warn" ng-click="list.showDetails(customer.id)">
+          <mat-icon>card_membership</mat-icon>
+          Details
+        </mat-button>
+      </mat-menu-item>
+      <mat-menu-item>
+        <mat-button class="mat-accent" >
+          <mat-icon>edit</mat-icon>
+          Edit
+        </mat-button>
+      </mat-menu-item>
+
+      <mat-menu-divider></mat-menu-divider>
+      <mat-menu-item>
+        <mat-button class="mat-warn">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </mat-button>
+      </mat-menu-item>
+    </mat-menu-content>
+    </mat-menu>
+
+
+  </mat-list-item>
+</mat-list>
