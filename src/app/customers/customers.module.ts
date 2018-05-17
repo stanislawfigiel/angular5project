@@ -1,7 +1,6 @@
 
 import { RouterModule, Routes } from '@angular/router';
 import { CustomersComponent } from './customers.component';
-import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {CustomersListComponent} from "./list/customers.list.component";
 import {CustomersEditComponent} from "./edit/customers.edit.component";
@@ -9,6 +8,8 @@ import {CustomersAddComponent} from "./add/customers.add.component";
 import {CustomersDeleteComponent} from "./delete/customers.delete.component";
 import {TopMenuCustomersComponent} from "./topMenuCustomers/topMenuCustomers.component";
 import {RestApiService} from "../common/service/RestApiService";
+import {MaterialModule} from "../common/material/material.module";
+import {BrowserModule} from "@angular/platform-browser";
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MaterialModule
   ],
   exports: [CustomersComponent,
   ],

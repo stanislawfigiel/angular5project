@@ -28,7 +28,7 @@ export class CustomersEditComponent implements OnInit {
         this.selectedCustomer = this.restApiService.getByIndex(this.id);
       }
     });
-    
+
   }
 
 

@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiService} from "../../common/service/RestApiService";
+import {Customer} from "../../common/model/Customer";
+// import {MaterialModule} from "../../common/material/material.module";
 
 @Component({
   selector: 'customers-list',
@@ -7,7 +9,7 @@ import {RestApiService} from "../../common/service/RestApiService";
   styleUrls: ['./customers.list.component.scss']
 })
 export class CustomersListComponent implements OnInit {
-  list: {}[];
+  list: Customer[];
   title = 'customers listcomponent';
   selectedCustomer;
 
