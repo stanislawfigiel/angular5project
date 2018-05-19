@@ -1,1 +1,13 @@
-Delete
+<h1 mat-dialog-title>Hi {{selectedCustomer.firstName}}</h1>
+<div mat-dialog-content>
+  <p>Are You sure that You want delete this record ?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button (click)="onOkClick()">Ok</button>
+
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div>

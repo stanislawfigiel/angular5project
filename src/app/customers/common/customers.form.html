@@ -1,17 +1,18 @@
 
   <div *ngIf="selectedCustomer" class="form-container">
-    <form class="form-container" #customerForm="ngForm">
+    <form class="form-container" #customerForm="ngForm"
+          (ngSubmit)="onSubmit()"
+    >
       <mat-form-field>
         <input matInput
                placeholder="First name"
                [(ngModel)]="selectedCustomer.firstName"
                name="firstName"
                #firstName="ngModel"
-               required
-               minlength="3"
+               regularExpressionValidator regularExpression="^[A-Z]{1}[a-z]{2,20}$"
         >
         <mat-error [hidden]="firstName.valid || firstName.pristine">
-          First name is <strong>required</strong> and should have at leats 3 chars.
+          First name is <strong>required</strong>,  should have at least 3 chars and first letter shoul be capital.
         </mat-error>
       </mat-form-field>
 
@@ -20,11 +21,10 @@
                [(ngModel)]="selectedCustomer.lastName"
                name="lastName"
                #lastName="ngModel"
-               required
-               minlength="3"
+               regularExpressionValidator regularExpression="^[A-Z]{1}[a-z]{2,20}$"
         >
         <mat-error [hidden]="lastName.valid || lastName.pristine">
-          Last name is <strong>required</strong> and should have at leats 3 chars.
+          Last name is <strong>required</strong> and should have at least 3 chars and First letter should be capital.
         </mat-error>
       </mat-form-field>
 
@@ -62,7 +62,9 @@
       </mat-form-field>
       <div>
         <div class="button-row">
-          <button type="submit" mat-raised-button color="primary">Submit</button>
+          <button type="submit"
+                  [disabled]="!customerForm.form.valid"
+                  mat-raised-button color="primary">Submit</button>
           <button type="reset" mat-raised-button color="primary">Reset</button>
           <button type="button" routerLink="/customers/list" mat-raised-button color="primary">Return to list</button>
         </div>

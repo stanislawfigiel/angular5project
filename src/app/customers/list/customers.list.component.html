@@ -15,45 +15,24 @@
 </ul>
 -->
 
+
 <mat-list>
   <mat-list-item *ngFor="let customer of list; let idx=index;">
     <div class="avatar">
       <mat-icon class="icon mat-accent">person</mat-icon>
     </div>
-    <div class="mat-list-item-text">
+    <div class="toolbar-spacer">
     <span> {{customer.firstName}} {{customer.lastName}}</span>
     </div>
 
-
-    <mat-menu class="mat-secondary">
-    <mat-button class="mat-icon-button">
-      <mat-tooltip mat-direction="left">Click to show menu</mat-tooltip>
-      <mat-icon> menu </mat-icon>
-    </mat-button>
-    <mat-menu-content width="4">
-      <mat-menu-item>
-        <mat-button class="mat-warn" ng-click="list.showDetails(customer.id)">
-          <mat-icon>card_membership</mat-icon>
-          Details
-        </mat-button>
-      </mat-menu-item>
-      <mat-menu-item>
-        <mat-button class="mat-accent" >
-          <mat-icon>edit</mat-icon>
-          Edit
-        </mat-button>
-      </mat-menu-item>
-
-      <mat-menu-divider></mat-menu-divider>
-      <mat-menu-item>
-        <mat-button class="mat-warn">
-          <mat-icon>delete</mat-icon>
-          Delete
-        </mat-button>
-      </mat-menu-item>
-    </mat-menu-content>
+    <button mat-button>
+      <mat-icon [matMenuTriggerFor]="menu" matTooltip="Click to show menu">menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button  mat-menu-item class="mat-accent" routerLink="/customers/details/{{idx}}">Details</button>
+      <button  mat-menu-item class="mat-background-accent" routerLink="/customers/edit/{{idx}}">Edit</button>
+      <button mat-menu-item class="mat-active" (click)="openDeleteDialog(customer)">Delete</button>
     </mat-menu>
-
 
   </mat-list-item>
 </mat-list>

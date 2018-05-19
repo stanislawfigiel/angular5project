@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {RestApiService} from "../../common/service/RestApiService";
 import {Customer} from "../../common/model/Customer";
+import {MatDialog} from "@angular/material";
+import {CustomersDeleteComponent} from "../delete/customers.delete.component";
+
 // import {MaterialModule} from "../../common/material/material.module";
 
 @Component({
@@ -12,8 +15,12 @@ export class CustomersListComponent implements OnInit {
   list: Customer[];
   title = 'customers listcomponent';
   selectedCustomer;
+  animal: string;
+  name: string;
 
-  constructor(private restApiService: RestApiService) {
+  constructor(private restApiService: RestApiService,
+              public dialog: MatDialog
+              ) {
 
   }
 
@@ -22,9 +29,20 @@ export class CustomersListComponent implements OnInit {
 
   }
 
-  selectCustomer = (customer) => {
-    this.selectedCustomer = customer;
-    // console.log('alert', customer);
+    selectCustomer = (customer) => {
+    this.selectedCustomer = {...customer};
+  }
+
+  openDeleteDialog(customer:Customer): void {
+    let dialogRef = this.dialog.open(CustomersDeleteComponent, {
+      width: '250px',
+      data: { selectedCustomer: customer}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
 }

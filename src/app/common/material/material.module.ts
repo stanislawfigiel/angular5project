@@ -14,6 +14,11 @@ import {
   MatToolbarModule,
   MatListModule,
   MatMenuModule,
+  MatTooltipModule,
+  MatSelectModule,
+  MatOptionModule,
+  // ErrorStateMatcher,
+  // MatError,
 } from '@angular/material';
 
 @NgModule({
@@ -31,7 +36,12 @@ import {
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule,
+    MatSelectModule,
+    MatOptionModule,
+    // ErrorStateMatcher,
+    // MatError,
 
   ],
   exports:[
@@ -48,7 +58,12 @@ import {
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatTooltipModule,
+    MatSelectModule,
+    MatOptionModule,
+    // ErrorStateMatcher,
+    // MatError,
   ],
   declarations: []
 })

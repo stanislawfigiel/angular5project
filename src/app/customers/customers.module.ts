@@ -10,6 +10,9 @@ import {TopMenuCustomersComponent} from "./topMenuCustomers/topMenuCustomers.com
 import {RestApiService} from "../common/service/RestApiService";
 import {MaterialModule} from "../common/material/material.module";
 import {BrowserModule} from "@angular/platform-browser";
+import { CustomersDetailsComponent } from './details/customers.details.component';
+import { FormsModule } from '@angular/forms';
+import {RegularExpressionValidatorDirective} from "../common/validation/regularExpressionValidator/regular-expression-validator.directive";
 
 
 const routes: Routes = [
@@ -18,11 +21,6 @@ const routes: Routes = [
     redirectTo: 'customers/list',
     pathMatch: 'full'
   },
-  {
-    path: 'customer/test',
-    component: CustomersListComponent
-  },
-
   {
     path: 'customers',
     children: [
@@ -35,11 +33,15 @@ const routes: Routes = [
         component: CustomersAddComponent
       },
       {
+        path: 'details/:idx',
+        component: CustomersDetailsComponent
+      },
+      {
         path: 'edit/:id',
         component: CustomersEditComponent
       },
       {
-        path: 'delete',
+        path: 'delete/:id',
         component: CustomersDeleteComponent
       }
 
@@ -54,14 +56,18 @@ const routes: Routes = [
     CustomersEditComponent,
     CustomersAddComponent,
     CustomersDeleteComponent,
-    TopMenuCustomersComponent
-
+    TopMenuCustomersComponent,
+    CustomersDetailsComponent,
+    RegularExpressionValidatorDirective
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+
   ],
+
   exports: [CustomersComponent,
   ],
   providers: [RestApiService],

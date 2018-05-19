@@ -1,0 +1,14 @@
+<div class="details-container">
+  <label>First name:</label>
+  <span>{{selectedCustomer.firstName}}</span>
+  <label>Last name:</label>
+  <span>{{selectedCustomer.lastName}}</span>
+  <label>Email:</label>
+  <span>{{selectedCustomer.email}}</span>
+  <label>Company:</label>
+  <span>{{selectedCustomer.company}}</span>
+<div>
+  <button type="button" routerLink="/customers/edit/{{idx}}" mat-raised-button color="primary">Edit</button>
+  <button type="button" routerLink="/customers/list" mat-raised-button color="primary">Return to list</button>
+</div>
+</div>
