@@ -7,7 +7,7 @@ import {Customer} from "../../common/model/Customer";
 @Component({
   selector: 'customers-edit',
   templateUrl: '../common/customers.form.html',
-  styleUrls: ['./customers.edit.component.scss'],
+  styleUrls: ['../common/customers.form.scss'],
 
 })
 

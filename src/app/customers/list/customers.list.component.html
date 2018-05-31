@@ -1,21 +1,3 @@
-
-<!--
-
-<ul>
-  <li *ngFor="let customer of list; let idx=index;"
-      [class.selected]="customer===selectedCustomer"
-      (click)="selectCustomer(customer)"
-  >
-    <a routerLink="/customers/edit/{{idx}}">
-      {{customer.firstName}}
-      {{customer.lastName}}
-    </a>
-  </li>
-
-</ul>
--->
-
-
 <mat-list>
   <mat-list-item *ngFor="let customer of list; let idx=index;">
     <div class="avatar">
