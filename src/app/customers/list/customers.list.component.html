@@ -25,14 +25,14 @@
     <span> {{customer.firstName}} {{customer.lastName}}</span>
     </div>
 
-    <button mat-button>
-      <mat-icon [matMenuTriggerFor]="menu" matTooltip="Click to show menu">menu</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
     </button>
+
     <mat-menu #menu="matMenu">
       <button  mat-menu-item class="mat-accent" routerLink="/customers/details/{{idx}}">Details</button>
       <button  mat-menu-item class="mat-background-accent" routerLink="/customers/edit/{{idx}}">Edit</button>
       <button mat-menu-item class="mat-active" (click)="openDeleteDialog(customer)">Delete</button>
     </mat-menu>
-
   </mat-list-item>
 </mat-list>
