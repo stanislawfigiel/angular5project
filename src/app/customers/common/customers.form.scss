@@ -1,16 +1,18 @@
 
 .form-container {
   margin: 5px auto;
+  padding: 0 25px 0 25px;
   display: flex;
   flex-direction: column;
-  min-width: 150px;
-  max-width: 700px;
   align-items: center;
-  justify-content: center;
-  list-style: none;
+  //justify-content: center;
+  //list-style: none;
 }
 
 .form-container > * {
   width: 100%;
+}
+mat-form-field{
+  height: 70px;
 }
 
