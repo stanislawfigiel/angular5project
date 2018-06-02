@@ -1,3 +1,20 @@
-.messageBox{
+.messageBox {
 
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.successBox{
+  @extend .messageBox;
+  color: green;
+}
+
+.errorBox{
+  @extend .messageBox;
+  color: red;
+}
+.warningBox{
+  @extend .messageBox;
+  color: orange;
 }
