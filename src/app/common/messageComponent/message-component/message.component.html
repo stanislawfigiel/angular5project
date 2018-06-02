@@ -1,10 +1,13 @@
 <div style="height: 50px;">
-<!--<mat-card *ngIf="errorMessage" style="color: red">
-  {{errorMessage}}
-</mat-card>-->
-<!--<mat-card *ngIf="successMessage" style="color: green; border-width: 0px; border: none;">
-  {{successMessage}}
-</mat-card>-->
+
+  <div *ngIf="warningMessage" class="warningBox">
+    {{warningMessage}}
+  </div>
+
+  <div *ngIf="errorMessage" class="errorBox">
+    {{errorMessage}}
+  </div>
+
   <div *ngIf="successMessage" class="successBox">
     {{successMessage}}
   </div>
