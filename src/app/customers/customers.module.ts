@@ -14,6 +14,7 @@ import { CustomersDetailsComponent } from './details/customers.details.component
 import { FormsModule } from '@angular/forms';
 import {RegularExpressionValidatorDirective} from "../common/validation/regularExpressionValidator/regular-expression-validator.directive";
 import {MessageComponent} from "../common/messageComponent/message-component/message.component";
+import {MessageService} from "../common/service/MessageService";
 
 
 const routes: Routes = [
@@ -72,7 +73,7 @@ const routes: Routes = [
 
   exports: [CustomersComponent,
   ],
-  providers: [RestApiService],
+  providers: [RestApiService,MessageService],
   bootstrap: [CustomersComponent]
 })
 

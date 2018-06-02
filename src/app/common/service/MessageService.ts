@@ -10,8 +10,10 @@ export class MessageService {
 
   successMessageAnnounced$ = this.successMessageSource.asObservable();
   errorMessageAnnounced$ = this.errorMessageSource.asObservable();
+  warningMessageAnnounced$ = this.warningMessageSource.asObservable();
 
   announceSuccess(message: string) {
+    console.log('success ogloszony', message);
     this.successMessageSource.next(message);
   }
 
