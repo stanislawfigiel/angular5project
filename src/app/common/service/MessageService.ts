@@ -32,7 +32,7 @@ export class MessageService {
 
   private resetMessage(subject:Subject<string>){
     subject.next("");
-    clearInterval(this.handleInterval);
+    // clearInterval(this.handleInterval);
   }
 
 

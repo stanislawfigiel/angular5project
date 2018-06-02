@@ -15,8 +15,11 @@ export class RestApiService{
     return this.list[index];
   }
 
-  public addCustomer(customer:Customer):void{
+  public addCustomer(customer:Customer):number{
     this.list.push(customer);
+    let idx:number = this.list.findIndex(cust=> cust=== customer);
+    return idx;
+
   }
 
   public deleteCustomer(customer:Customer):void{
