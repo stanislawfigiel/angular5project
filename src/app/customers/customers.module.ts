@@ -13,6 +13,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import { CustomersDetailsComponent } from './details/customers.details.component';
 import { FormsModule } from '@angular/forms';
 import {RegularExpressionValidatorDirective} from "../common/validation/regularExpressionValidator/regular-expression-validator.directive";
+import {MessageComponent} from "../common/messageComponent/message-component/message.component";
 
 
 const routes: Routes = [
@@ -58,7 +59,8 @@ const routes: Routes = [
     CustomersDeleteComponent,
     TopMenuCustomersComponent,
     CustomersDetailsComponent,
-    RegularExpressionValidatorDirective
+    RegularExpressionValidatorDirective,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
