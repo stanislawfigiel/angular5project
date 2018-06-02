@@ -4,6 +4,7 @@ import {Subject} from "rxjs/Subject";
 @Injectable()
 export class MessageService {
 
+  private handleInterval:any;
   private successMessageSource = new Subject<string>();
   private errorMessageSource = new Subject<string>();
   private warningMessageSource = new Subject<string>();
@@ -13,16 +14,25 @@ export class MessageService {
   warningMessageAnnounced$ = this.warningMessageSource.asObservable();
 
   announceSuccess(message: string) {
-    console.log('success ogloszony', message);
     this.successMessageSource.next(message);
+    this.handleInterval = setTimeout(this.resetMessage, 3000, this.successMessageSource);
   }
 
-  announceErrorr(message: string) {
+
+
+  announceError(message: string) {
     this.errorMessageSource.next(message);
+    this.handleInterval = setTimeout(this.resetMessage, 3000, this.errorMessageSource);
   }
 
   announceWarning(message: string) {
     this.warningMessageSource.next(message);
+    this.handleInterval = setTimeout(this.resetMessage, 3000, this.warningMessageSource);
+  }
+
+  private resetMessage(subject:Subject<string>){
+    subject.next("");
+    clearInterval(this.handleInterval);
   }
 
 

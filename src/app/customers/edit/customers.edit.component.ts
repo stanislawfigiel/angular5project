@@ -14,10 +14,9 @@ import {Subscription} from "rxjs/Subscription";
 })
 
 
-export class CustomersEditComponent implements OnInit, OnDestroy {
+export class CustomersEditComponent {
   public id: number;
   selectedCustomer: Customer;
-  subscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -34,26 +33,12 @@ export class CustomersEditComponent implements OnInit, OnDestroy {
       }
     });
 
-
-    this.subscription = this.messageService.successMessageAnnounced$.subscribe(
-      message => {
-        console.log("w komponencie edit", message);
-      });
-
   }
 
-
-  ngOnInit(): void {
-
-  }
-  ngOnDestroy() {
-    // prevent memory leak when component destroyed
-    this.subscription.unsubscribe();
-  }
 
   onSubmit(): void {
-    this.messageService.announceSuccess("Data was saved with success");
     this.restApiService.updateCustomer(this.selectedCustomer);
+    this.messageService.announceSuccess("Data was saved with success.");
   }
 
 }
