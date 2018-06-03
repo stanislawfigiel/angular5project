@@ -21,7 +21,7 @@ export class CustomersDetailsComponent implements OnInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.id = this.activatedRoute.snapshot.paramMap.get('idx');
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
         this.restApiService.getByIdFromRest(this.id).subscribe(
           data=>{
             let restCustomer:RestCustomer = data.customer;

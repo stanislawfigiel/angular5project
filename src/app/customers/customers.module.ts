@@ -35,7 +35,7 @@ const routes: Routes = [
         component: CustomersAddComponent
       },
       {
-        path: 'details/:idx',
+        path: 'details/:id',
         component: CustomersDetailsComponent
       },
       {

@@ -43,14 +43,13 @@ export class CustomersEditComponent {
 
 
   onSubmit(): void {
-    this.restApiService.updateCustomer(this.selectedCustomer);
     let restCustomer:RestCustomer = this.restApiService.mapCustomerToRestCustomer(this.selectedCustomer);
     this.restApiService.updateCustomerFromRest(restCustomer)
       .subscribe(result=>{
-
+        this.messageService.announceSuccess("Data has been saved with success.");
       })
     ;
-    this.messageService.announceSuccess("Data was saved with success.");
+
   }
 
 }

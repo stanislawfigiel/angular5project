@@ -29,7 +29,6 @@ export class CustomersListComponent implements OnInit {
     // this.list = this.restApiService.getCustomers();
     this.restApiService.getCustomersFromRest()
       .subscribe((data: {customers:RestCustomer[]}) => {
-        console.log("odpowiedz:", data);
         this.list = this.mapRestCustomersToCustomers(data.customers);
         }
       );
