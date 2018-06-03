@@ -20,7 +20,10 @@ export class CustomersAddComponent {
 
   onSubmit():void{
     let idx = this.restApiService.addCustomer(this.selectedCustomer);
+
+    
   this.router.navigate(["/customers/edit/"+idx]);
 
   }
 }
+

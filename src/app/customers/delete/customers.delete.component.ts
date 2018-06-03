@@ -28,7 +28,7 @@ export class CustomersDeleteComponent {
 
   onOkClick(): void {
     this.dialogRef.close();
-    this.restApiService.deleteCustomer(this.selectedCustomer);
+    this.restApiService.deleteCustomerFromRest(this.selectedCustomer.id).subscribe();
   }
 
 

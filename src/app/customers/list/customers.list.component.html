@@ -12,8 +12,8 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <button  mat-menu-item class="mat-accent" routerLink="/customers/details/{{idx}}">Details</button>
-      <button  mat-menu-item class="mat-background-accent" routerLink="/customers/edit/{{idx}}">Edit</button>
+      <button  mat-menu-item class="mat-accent" routerLink="/customers/details/{{customer.id}}">Details</button>
+      <button  mat-menu-item class="mat-background-accent" routerLink="/customers/edit/{{customer.id}}">Edit</button>
       <button mat-menu-item class="mat-active" (click)="openDeleteDialog(customer)">Delete</button>
     </mat-menu>
   </mat-list-item>

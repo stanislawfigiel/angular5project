@@ -3,6 +3,7 @@ import {RestApiService} from "../../common/service/RestApiService";
 import {Customer} from "../../common/model/Customer";
 import {MatDialog} from "@angular/material";
 import {CustomersDeleteComponent} from "../delete/customers.delete.component";
+import {RestCustomer} from "../../common/model/RestCustomer";
 
 // import {MaterialModule} from "../../common/material/material.module";
 
@@ -25,7 +26,14 @@ export class CustomersListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.list = this.restApiService.getCustomers();
+    // this.list = this.restApiService.getCustomers();
+    this.restApiService.getCustomersFromRest()
+      .subscribe((data: {customers:RestCustomer[]}) => {
+        console.log("odpowiedz:", data);
+        this.list = this.mapRestCustomersToCustomers(data.customers);
+        }
+      );
+
 
   }
 
@@ -43,6 +51,18 @@ export class CustomersListComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
+  }
+
+
+  mapRestCustomersToCustomers(restCustomers:RestCustomer[]):Customer[]{
+    let customers:Customer[] = [];
+    for(let restCustomer of restCustomers){
+       let customer:Customer = this.restApiService.mapRestCustomerToCustomer(restCustomer);
+       console.log("customer w petli:", customer);
+        customers.push(customer);
+    }
+    return customers;
+
   }
 
 }

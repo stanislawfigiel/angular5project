@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {Customer} from "../../common/model/Customer";
 import {RestApiService} from "../../common/service/RestApiService";
+import {RestCustomer} from "../../common/model/RestCustomer";
 
 @Component({
   selector: 'customers-details',
@@ -9,7 +10,7 @@ import {RestApiService} from "../../common/service/RestApiService";
   styleUrls: ['./customers.details.component.scss']
 })
 export class CustomersDetailsComponent implements OnInit {
-  public idx:number;
+  public id:string;
   selectedCustomer: Customer;
 
 
@@ -20,9 +21,13 @@ export class CustomersDetailsComponent implements OnInit {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.idx = parseInt(this.activatedRoute.snapshot.paramMap.get('idx'));
-        let customer:Customer = this.restApiService.getByIndex(this.idx);
-        this.selectedCustomer = {...customer};
+        this.id = this.activatedRoute.snapshot.paramMap.get('idx');
+        this.restApiService.getByIdFromRest(this.id).subscribe(
+          data=>{
+            let restCustomer:RestCustomer = data.customer;
+            this.selectedCustomer = this.restApiService.mapRestCustomerToCustomer(restCustomer);
+          }
+        );
       }
     });
 

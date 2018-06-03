@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 import {RegularExpressionValidatorDirective} from "../common/validation/regularExpressionValidator/regular-expression-validator.directive";
 import {MessageComponent} from "../common/messageComponent/message-component/message.component";
 import {MessageService} from "../common/service/MessageService";
-
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {
@@ -68,6 +68,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MaterialModule,
     FormsModule,
+    HttpClientModule,
 
   ],
 

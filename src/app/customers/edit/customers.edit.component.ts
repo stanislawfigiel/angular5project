@@ -5,6 +5,7 @@ import {RestApiService} from "../../common/service/RestApiService";
 import {Customer} from "../../common/model/Customer";
 import {MessageService} from "../../common/service/MessageService";
 import {Subscription} from "rxjs/Subscription";
+import {RestCustomer} from "../../common/model/RestCustomer";
 
 @Component({
   selector: 'customers-edit',
@@ -15,7 +16,7 @@ import {Subscription} from "rxjs/Subscription";
 
 
 export class CustomersEditComponent {
-  public id: number;
+  public id: string;
   selectedCustomer: Customer;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -27,9 +28,14 @@ export class CustomersEditComponent {
 
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        this.id = parseInt(this.activatedRoute.snapshot.paramMap.get('id'));
-        let customer: Customer = this.restApiService.getByIndex(this.id);
-        this.selectedCustomer = {...customer};
+        this.id = this.activatedRoute.snapshot.paramMap.get('id');
+        this.restApiService.getByIdFromRest(this.id)
+          .subscribe((data:{customer:RestCustomer}) => {
+              this.selectedCustomer = this.restApiService.mapRestCustomerToCustomer(data.customer);
+            }
+          );
+        ;
+
       }
     });
 
@@ -38,6 +44,12 @@ export class CustomersEditComponent {
 
   onSubmit(): void {
     this.restApiService.updateCustomer(this.selectedCustomer);
+    let restCustomer:RestCustomer = this.restApiService.mapCustomerToRestCustomer(this.selectedCustomer);
+    this.restApiService.updateCustomerFromRest(restCustomer)
+      .subscribe(result=>{
+
+      })
+    ;
     this.messageService.announceSuccess("Data was saved with success.");
   }
 
