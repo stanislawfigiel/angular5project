@@ -25,8 +25,7 @@ export class CustomersListComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    // this.list = this.restApiService.getCustomers();
+  public ngOnInit() {
     this.restApiService.getCustomersFromRest()
       .subscribe((data: {customers:RestCustomer[]}) => {
         this.list = this.mapRestCustomersToCustomers(data.customers);
@@ -47,8 +46,9 @@ export class CustomersListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
+      if (result == "yes") {
+        this.ngOnInit();
+      }
     });
   }
 

@@ -25,11 +25,11 @@ export class CustomersDeleteComponent {
 
 
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close("no");
   }
 
   onOkClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close("yes");
     this.restApiService.deleteCustomerFromRest(this.selectedCustomer.id).subscribe(
       result => {
         this.messageService.announceSuccess("Row has been deleted with success.");
